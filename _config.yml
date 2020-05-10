@@ -1,13 +1,13 @@
 # Site settings
-title: Kass Blog
-SEOTitle: 学习记录
+title: 我的学习记录
+SEOTitle: Kass Blog
 header-img: img/post-bg-desk.jpg
-email: klovien@gmail.com
-description: "中西融合, 即学即会, 从此不再辛苦背单词"
-keyword: "人工语言, 国际语, 世界语, 三叶草国际语, 三叶语"
-url: "https://klovien.github.io"          # your host, for absolute URL
+email: durianno1@aliyun.com
+description: "仅记录一下个人学习过程中的经验"
+keyword: "编程，后端，人工智能，计算机视觉，图神经网络，行为识别"
+url: "https://durianno1.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
-github_repo: "https://github.com/klovien/klovien.github.io.git" # you code repository
+github_repo: "https://github.com/durianno1/durianno1.github.io.git" # you code repository
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
