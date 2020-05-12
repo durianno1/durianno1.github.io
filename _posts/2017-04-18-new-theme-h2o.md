@@ -8,7 +8,7 @@ cover: 'http://on2171g4d.bkt.clouddn.com/jekyll-theme-h2o-postcover.jpg'
 tags: golang 
 ---
 
-今日日常被回溯算法折磨,与'子集'狭路相逢,为了熟悉golang,我尽量都用golang做题,又遇一'坑'。
+今日日常被回溯算法折磨，与‘子集’狭路相逢，为了熟悉golang，我尽量都用golang做题,又遇一‘坑’。
 
 ## slice弱拷贝
 
@@ -41,7 +41,33 @@ tags: golang
 }
  ```
 
-新主题名叫"H2O"，基于Jekyll 3.0.x（使用```gem update jekyll```升级Jekyll），Markdown的代码高亮不再支持pygments转而使用rouge，咱已经默认配置了 ```highlighter: rouge``` 。用到的技术栈也很简单：引入jQuery类库，使用Sass编写样式，使用Gulp来编译Sass、合并压缩css、js，开源在[Github](https://github.com/kaeyleo/jekyll-theme-H2O)上，稍作配置即可用于你的Jekyll博客上。
+该程序输入nums[1,2,3],可以得到正确结果[[],[1],[2],[3],[1,2],[1,3],[2,3],[1,2,3]]。
+我当时看到这个答案心中就有疑惑，明明在 if len(cur)==length 判断下没有任何改变cur值的操作，为什么还有新建一个副本temp来存放cur的值，于是出于刨根问底原则，我讲代码改为一下：
+
+ ```go
+	func subsets(nums []int) [][]int {
+    res:=[][]int{}
+    var backtrace func(pos,length int,cur []int)
+    backtrace=func(pos,length int,cur []int){
+        if len(cur)==length{
+            res = append(res，cur)
+            return
+        }
+
+        for i:=pos;i<len(nums);i++{
+            cur = append(cur,nums[i])
+            backtrace(i+1,length,cur)
+            cur = cur[:len(cur)-1]
+        }
+    }
+    for i:=0;i<=len(nums);i++{
+        cur := make([]int,0)
+        backtrace(0,i,cur)
+    }
+    return res
+}
+ ```
+ 我将新建副本tmp操作删除，得到结果[[],[3],[3],[3],[1,3],[1,3],[2,3],[1,2,3]]。
 
 ![Design with Sketch](http://on2171g4d.bkt.clouddn.com/jekyll-theme-h2o-sketchdesign.png)
 
