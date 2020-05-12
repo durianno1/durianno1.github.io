@@ -15,8 +15,7 @@ tags: golang
 [原题地址 →](https://leetcode-cn.com/problems/subsets/)
 
 首先看代码
- ```css
-	p { color: red }
+ ```go
 	func subsets(nums []int) [][]int {
     res:=[][]int{}
     var backtrace func(pos,length int,cur []int)
