@@ -42,7 +42,7 @@ tags: golang
  ```
 
 该程序输入nums[1,2,3],可以得到正确结果[[],[1],[2],[3],[1,2],[1,3],[2,3],[1,2,3]]。
-我当时看到这个答案心中就有疑惑，明明在 if len(cur)==length 判断下没有任何改变cur值的操作，为什么还有新建一个副本temp来存放cur的值，于是出于刨根问底原则，我讲代码改为一下：
+我当时看到这个答案心中就有疑惑，明明在 if len(cur)==length 判断下没有任何改变cur值的操作，为什么还有新建一个副本temp来存放cur的值，于是出于刨根问底原则，我将代码改为以下：
 
  ```go
 	func subsets(nums []int) [][]int {
@@ -60,7 +60,7 @@ tags: golang
             cur = cur[:len(cur)-1]
         }
     }
-    for i:=0;i<=len(nums);i++{
+    for i:=0;i<=len(nums);i++{//1
         cur := make([]int,0)
         backtrace(0,i,cur)
     }
@@ -68,6 +68,8 @@ tags: golang
 }
  ```
  我将新建副本tmp操作删除，得到结果[[],[3],[3],[3],[1,3],[1,3],[2,3],[1,2,3]]。
+ 一番网上冲浪后，我找到了答案，在代码块//1的处的每一次循环会新建一个slice，命名为cur，并将cur传入backtrace，则在该次backtrace中无论怎样递归回溯，cur始终是那个slice，因为在go中slice传参是弱拷贝，不会建立副本，所以每次改变cur中的值，都会改变同次循环中添加到res中的cur的值。
+ 
 
 ![Design with Sketch](http://on2171g4d.bkt.clouddn.com/jekyll-theme-h2o-sketchdesign.png)
 
