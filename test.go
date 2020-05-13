@@ -2,14 +2,9 @@ package main
 
 import "fmt"
 
-func main() {
-	c := []int{1, 2, 3}
-	tool(&c)
-	fmt.Println(c)
-}
+var res [][]int
 
-func tool(c *[]int) {
-	d := c
-	*d[0] = 3
-	fmt.Println(d)
+func main() {
+	res = append(res, []int{1})
+	fmt.Println(res)
 }
