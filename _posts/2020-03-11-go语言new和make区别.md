@@ -5,7 +5,7 @@ subtitle: 'make和new创建变量的区别和特点'
 date: 2020-03-11
 categories: 技术
 cover: 'http://on2171g4d.bkt.clouddn.com/jekyll-theme-h2o-postcover.jpg'
-tags:  go
+tags:  golang
 ---
 首先二者都是在堆中分配内存的关键字
 ## new
