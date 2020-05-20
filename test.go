@@ -2,9 +2,9 @@ package main
 
 import "fmt"
 
-var res [][]int
-
 func main() {
-	res = append(res, []int{1})
-	fmt.Println(res)
+	res := new(map[int]int)
+	(*res)[0] = 1
+	fmt.Println(*res)
+
 }
