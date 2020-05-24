@@ -43,7 +43,6 @@ comments:
 # MathJax 公式支持 by Ray-Eldath
 mathjax: true
 
-header-img: assets/img/banner.jpeg
 
 # Share
 social-share: true
