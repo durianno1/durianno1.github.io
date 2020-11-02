@@ -40,3 +40,26 @@ ONBUILD 			# 被继承时候触发
 ENV						# 设置环境变量
 ```
 
+
+
+### 写一个centos的dockerfile ###
+
+```shell
+FROM centos
+MAINTAINER Severus<durianno1@aliyun.com>
+
+ENV MYPATH /usr/local
+WORKDIR $MYPATH
+
+RUN yum -y install vim
+RUN yum -y install net-tools
+
+EXPOSE 80
+
+CMD echo $MYPATH
+CMD echo "------end-------"
+CMD /bin/bash
+```
+
+> docker build -f dockerfile -t mycentos:0.1 . 
+
