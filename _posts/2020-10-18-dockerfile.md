@@ -33,7 +33,7 @@ CMD 					# 设置容器启动后默认执行的命令和参数，可以被docker
 ENTRYPOINT		# 与CMD类似不过不会被覆盖始终会执行
 COPY 					# 将本地文件复制到容器中，如果复制的是一个目录，则不复制目录，只复制目录中文件
 WORKDIR				# 工作目录,进入到容器后的目录
-ADD 					# 与COPY类似，功能更多更灵活
+ADD 					# 与COPY类似，功能更多更灵活,会自动解压压缩包
 EXPOSE 				# 监听的端口，可在docker run 时候用-p覆盖
 VOLUME 				# 配置数据卷挂载
 ONBUILD 			# 被继承时候触发
@@ -62,4 +62,24 @@ CMD /bin/bash
 ```
 
 > docker build -f dockerfile -t mycentos:0.1 . 
+
+
+
+
+
+### 写一个tomcat的dockerfile ###
+
+```shell
+FROM centos
+MAINTAIN Severus<durianno1@aliyun.com>
+
+COPY readme.txt /usr/local/readme.txt
+ADD jdk /usr/local/
+ADD tomcat /usr/local/
+
+RUN yum -y install vim
+
+ENV MYPATH /usr/local
+WORKDIR $MYPATH
+```
 
